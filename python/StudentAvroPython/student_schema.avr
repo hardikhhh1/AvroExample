@@ -1,0 +1,35 @@
+{
+	"protocol":"StudentService",
+	"namespace":"com.avro.protocol.student",
+	"proxyGroups":"student",
+	"pathSpec":"/avro/student",
+	"types":
+		[
+			{
+				"type":"enum",
+				"name":"Major",
+				"symbols":	["COMPUTER_SCIENCE",
+							 "INFORMATION_SYSTEMS",
+							 "BUISSNESS_STUDIES",
+							 "INDUSTRIAL_ENGINEERING"
+							]
+			},
+			{
+				"type":"record",
+				"name":"Student",
+				"fields":[
+						{"name":"firstName","type":"string"},
+						{"name":"lastName","type":"string"},
+						{"name":"age","type":"int"},
+						{"name":"major","type":"Major"},
+						{"name":"status","type":["null","string"],"default":null}
+                        
+						]
+			}
+		],
+	"messages":
+		{
+			"sendToCollege":{"request":[{"name":"student","type":"Student"}],"response":"boolean"},
+			"getStudentInformation":{"request":[{"name":"student","type":"Student"}],"response":"string"}
+		}
+	}

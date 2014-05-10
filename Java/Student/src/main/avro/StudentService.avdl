@@ -1,0 +1,24 @@
+@proxyGroups("student") 
+@pathSpec("/avro/student")
+@namespace("com.avro.protocol.student") // the package name for the generated code.
+protocol StudentService {
+
+
+enum Major {
+COMPUTER_SCIENCE, 
+INFORMATION_SYSTEMS,
+BUISSNESS_STUDIES,
+INDUSTRIAL_ENGINEERING
+}
+// record is like a java class in avro
+record Student {
+string firstName;
+string lastName;
+int age;
+Major major;
+union { null, string } status = null;
+}
+
+boolean sendToCollege(Student student);
+string getStudentInformation(Student student);
+}
